@@ -1,0 +1,39 @@
+/*
+ * ============================================================
+ *  MOMENTS, SKEWNESS AND KURTOSIS IN C
+ * ============================================================
+ *
+ * GOAL: describe the SHAPE of the distribution of one column
+ * (by default, Attendance) from StudentPerformanceFactors.csv.
+ *
+ * CSV COLUMNS: Gender, Attendance, Hours_Studied, Exam_Score
+ * We only need the 2nd column, Attendance.
+ *
+ * THE MATH:
+ *
+ *   Raw moment about the origin (k-th):
+ *       mu_k' = (1/n) * sum(x_i ^ k)
+ *
+ *   Central moment about the mean (k-th):
+ *       mu_k  = (1/n) * sum((x_i - mean) ^ k)
+ *
+ *   Coefficient of skewness:
+ *       gamma1 = mu3 / (mu2 ^ 1.5)
+ *       beta1  = gamma1 ^ 2
+ *
+ *   Coefficient of kurtosis:
+ *       beta2  = mu4 / (mu2 ^ 2)
+ *       gamma2 = beta2 - 3        (this is "excess kurtosis")
+ *
+ * INTERPRETATION THRESHOLDS:
+ *   Skewness (gamma1):
+ *       |gamma1| < 0.5        -> approximately symmetric
+ *       0.5 <= |gamma1| < 1   -> moderately skewed
+ *       |gamma1| >= 1         -> highly skewed
+ *       (positive = right-skewed, negative = left-skewed)
+ *
+ *   Kurtosis (gamma2, excess):
+ *       gamma2 ~ 0   -> mesokurtic  (normal-like peak)
+ *       gamma2 > 0   -> leptokurtic (sharper peak, heavier tails)
+ *       gamma2 < 0   -> platykurtic (flatter peak, lighter tails)
+ */
